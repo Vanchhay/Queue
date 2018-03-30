@@ -10,10 +10,16 @@ use Libcast\JobQueue\Queue\QueueFactory;
 use Libcast\JobQueue\TestJob;
 
 $redis = new Client('tcp://localhost:6379');
-$queue = QueueFactory::build($redis);
+ $i = 1;
+while($i <= 50){
+    $queue = QueueFactory::build($redis);
 
-$task = new Task(new TestJob\DummyJob, 'dummy', []);
+    $task = new Task(new TestJob\DummyJob, 'dummy', ['request 2']);
 
-$queue->enqueue($task);
+    $queue->enqueue($task);
+    echo $i.'\n';
+    $i++;
+}
+
 
 echo 'Done\n\n';

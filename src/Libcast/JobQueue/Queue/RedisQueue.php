@@ -116,6 +116,7 @@ class RedisQueue extends AbstractQueue implements QueueInterface
                 case Task::STATUS_SUCCESS:
                 case Task::STATUS_FINISHED:
                     $task->setProgress(1);
+                    $this->getClient()->set('job_id:test', "TESTID");
                     break;
             }
         }

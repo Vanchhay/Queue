@@ -26,9 +26,11 @@ class Command extends BaseCommand
      */
     protected function configure()
     {
+        echo "Command/Command::configure()";
         $this->getDefinition()->addArgument(
             new InputArgument('config', InputArgument::OPTIONAL, 'The configuration')
         );
+        echo "end configure";
     }
 
     /**
@@ -54,6 +56,7 @@ class Command extends BaseCommand
      */
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
+        echo "init";
         $this->input = $input;
         $this->output = $output;
 

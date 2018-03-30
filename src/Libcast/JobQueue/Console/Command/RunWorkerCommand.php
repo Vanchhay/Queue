@@ -41,7 +41,6 @@ class RunWorkerCommand extends Command
             $this->getQueue(),
             $this->getLogger()
         );
-        echo "gogo";
         $worker->run();
     }
 }
